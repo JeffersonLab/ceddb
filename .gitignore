@@ -1,0 +1,5 @@
+.DS_Store
+.env
+.idea/
+run/var/oracle/oradata/XE/
+run/var/oracle/oradata/dbconfig/
