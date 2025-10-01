@@ -2,7 +2,7 @@
 version: '3'
 services:
     oracle:
-        image: 'jeffersonlab/ceddb:1.0'
+        image: 'jeffersonlab/ceddb:1.1'
         hostname: oracle
         ports:
             - '${FORWARD_ORA_PORT:-1521}:1521'
@@ -14,9 +14,9 @@ services:
             CED3_DEVL: '${CED3_DEVL}'
             CED3_OPS: '${CED3_OPS}'
             CED3_HIST: '${CED3_HIST}'
-        volumes:
-            # Keeps persistent oracle data in project run directory
-            - './run/var/oracle/oradata:/opt/oracle/oradata'
+#        volumes:
+#            # Keeps persistent oracle data in project run directory
+#            - './run/var/oracle/oradata:/opt/oracle/oradata'
         networks:
             - ced
 networks:

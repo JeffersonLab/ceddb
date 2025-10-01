@@ -1,0 +1,25 @@
+# This Docker file builds a populated
+FROM jeffersonlab/ceddb:1.1
+
+# Emplace dump file for importing
+COPY ./run/var/oracle/oradata/impdb/* /opt/oracle/oradata/impdb/
+COPY ./sql/enableCEDVersioning.sql /opt/oracle/oradata/impdb/
+COPY ./docker/populate.sh /container-entrypoint-initdb.d/999_populate.sh
+
+# Must be user root to chmod the file
+USER root
+# It's important for this to be made executable or else the initialization script
+# may stop execution at the first line that exits with any sort of warning
+# https://github.com/gvenzl/oci-oracle-xe?tab=readme-ov-file#initialization-scripts
+RUN chmod 755 /container-entrypoint-initdb.d/999_populate.sh
+
+# Must revert to oracle user for continuing on to (inherited) entrypoint
+USER oracle
+
+
+
+
+
+
+
+

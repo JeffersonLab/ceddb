@@ -19,10 +19,4 @@ echo "grant select on ced3_owner.event_id to ced3_ops;" \
 echo "grant execute on dbms_crypto to ced3_ops;" \
     | sqlplus -s sys/dflTPassWD@XEPDB1 as sysdba
 
-impdp system/dflTPassWD@xepdb1 exclude=user directory=import_data_dir dumpfile=ced.dmp schemas=ced3_ops \
-    exclude="user,statistics,table:\"in(\'usage_log\',\'admin_log\')\""
-echo "drop table admin_log;" \
-    | sqlplus -s ced3_ops/dflTPassWD@//localhost/XEPDB1
-echo "create synonym admin_log for ced3_owner.admin_log;" \
-    | sqlplus -s ced3_ops/dflTPassWD@//localhost/XEPDB1
 

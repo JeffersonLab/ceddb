@@ -1,167 +1,87 @@
 
 /**
-* NOTE:  This schema is maintained through ERWin.  Do not hand-edit!!!!
-*    Any changes made directly to this file will be lost!.
+* NOTE:  The original schema is maintained through ERWin, however, the contents
+*        below have been edited to remove unnecessary drop statements produced by erwin.
 *       
 */
-
-
-
--- These procedures are created via the enable
-DROP MATERIALIZED VIEW mv_cmpnt_prop_val_live;
-
--- If versioning is still enabled, the drops at the beginning of the
--- create script will fail.  We try to turn it off here. 
-
-EXECUTE DBMS_WM.DisableVersioning ('cmpnt_type, cmpnt_type_owners, cmpnt, cmpnt_owners, cmpnt_type_prop, cmpnt_prop, cmpnt_type_prop_def, cmpnt_type_prop_dom, cmpnt_type_prop_dim, cmpnt_type_prop_req, cmpnt_type_prop_owners, cmpnt_type_prop_cats, category_sets, cmpnt_prop_fk_cmpnt, cmpnt_prop_bool, cmpnt_prop_integer, cmpnt_prop_float, cmpnt_prop_string, cmpnt_prop_date, cmpnt_prop_blob, zones, zone_links, segments');
-
-
-DROP DATABASE LINK prod01;
-
-DROP SEQUENCE category_id;
 
 CREATE SEQUENCE category_id
     INCREMENT BY 1
     START WITH 10;
 
-DROP SEQUENCE cmpnt_id;
+
 
 CREATE SEQUENCE cmpnt_id
     INCREMENT BY 1
     START WITH 1000;
 
-DROP SEQUENCE cmpnt_prop_id;
+
 
 CREATE SEQUENCE cmpnt_prop_id
     INCREMENT BY 1
     START WITH 1000;
 
-DROP SEQUENCE cmpnt_type_id;
+
 
 CREATE SEQUENCE cmpnt_type_id
     INCREMENT BY 1000
     START WITH 10000;
 
-DROP SEQUENCE cmpnt_type_prop_id;
+
 
 CREATE SEQUENCE cmpnt_type_prop_id
     INCREMENT BY 1
     START WITH 1000;
 
-DROP SEQUENCE event_id;
+
 
 CREATE SEQUENCE event_id
     INCREMENT BY 1
     START WITH 1;
 
-DROP SEQUENCE history_seq;
+
 
 CREATE SEQUENCE history_seq
     INCREMENT BY 1
     START WITH 1
     NOCACHE;
 
-DROP SEQUENCE log_id;
+
 
 CREATE SEQUENCE log_id
     INCREMENT BY 1
     START WITH 1;
 
-DROP SEQUENCE segment_id;
+
 
 CREATE SEQUENCE segment_id
     INCREMENT BY 1
     START WITH 1;
 
-DROP SEQUENCE set_id;
+
 
 CREATE SEQUENCE set_id
     INCREMENT BY 1
     START WITH 100;
 
-DROP SEQUENCE value_id;
+
 
 CREATE SEQUENCE value_id
     INCREMENT BY 1
     START WITH 1000;
 
-DROP SEQUENCE zone_id;
+
 
 CREATE SEQUENCE zone_id
     INCREMENT BY 1
     START WITH 1;
 
-DROP SEQUENCE zone_links_id;
+
 
 CREATE SEQUENCE zone_links_id
     INCREMENT BY 10
     START WITH 10;
 
-DROP TABLE cmpnt_prop_blob CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE zone_links CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt_type_prop_req CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt_type_prop_dom CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt_prop_string CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt_type_prop_dim CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE workspace_info CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE admin_log CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE admin_lock CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE hist_cmpnt_prop_val CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE hist_cmpnt_prop CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE hist_cmpnt CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE merge_log CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE web_auth CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt_prop_fk_cmpnt CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE usage_log CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE segments CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE zones CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt_type_prop_owners CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt_owners CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt_prop_integer CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt_type_prop_def CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt_prop_float CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt_prop_date CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt_type_owners CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt_prop_bool CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt_prop CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt_type_prop CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt_type_prop_cats CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE category_sets CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE cmpnt_type CASCADE CONSTRAINTS PURGE;
 
 CREATE TABLE admin_lock
 (
