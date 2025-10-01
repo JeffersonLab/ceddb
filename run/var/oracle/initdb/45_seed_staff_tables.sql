@@ -7,3 +7,6 @@ insert into workgroup (workgroup_id, description, name)
    values (100,'CED Admin Group','cedadm');
 insert into workgroup_membership (staff_id,workgroup_id)
     values (100,100);
+
+insert into ced3_owner.staff (staff_id, lastname, firstname, username, sp_status, email)
+values (1000,'Doe','Jane','jdoe','PRESENT', null);
